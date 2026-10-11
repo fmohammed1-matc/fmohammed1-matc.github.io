@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fahad — Defensive Cybersecurity Portfolio</title>
+<style>
+:root{
+  --bg:#f4f7fb; --card:#ffffff; --ink:#16233a; --muted:#5b6b82;
+  --blue:#2563eb; --blue-deep:#1e40af; --line:#e3e9f2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+nav .logo{font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none}
+nav .logo span{color:var(--blue)}
+nav .links a{margin-left:22px;color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem}
+nav .links a:hover{color:var(--blue)}
+.hero{background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 55%,#3b82f6 100%);color:#fff;padding:84px 24px 72px;text-align:center;position:relative;overflow:hidden}
+.hero img.photo{width:150px;height:150px;border-radius:50%;border:5px solid rgba(255,255,255,.85);box-shadow:0 12px 40px rgba(0,0,0,.25);object-fit:cover}
+.hero h1{font-size:2.6rem;margin:20px 0 6px;letter-spacing:-.5px}
+.hero p.tag{font-size:1.15rem;opacity:.92;max-width:620px;margin:0 auto 28px}
+.btn{display:inline-block;padding:12px 28px;border-radius:999px;font-weight:700;text-decoration:none;margin:6px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--blue-deep)}
+.btn-ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
+section{max-width:1080px;margin:0 auto;padding:72px 24px}
+section h2{font-size:1.9rem;margin-bottom:8px;letter-spacing:-.3px}
+section .sub{color:var(--muted);margin-bottom:36px;max-width:640px}
+.about-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px;box-shadow:0 6px 24px rgba(22,35,58,.06)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(22,35,58,.06);transition:transform .2s,box-shadow .2s}
+.proj:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(37,99,235,.14)}
+.proj video{width:100%;display:block;background:#0f1c33;aspect-ratio:16/9;object-fit:cover}
+.proj .body{padding:24px}
+.proj h3{font-size:1.25rem;margin-bottom:6px}
+.proj h3 a{color:var(--ink);text-decoration:none}
+.proj h3 a:hover{color:var(--blue)}
+.proj p{color:var(--muted);font-size:.96rem;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tags span{background:#e8effc;color:var(--blue-deep);font-size:.78rem;font-weight:700;padding:4px 12px;border-radius:999px}
+.proj .go{color:var(--blue);font-weight:700;text-decoration:none}
+.skills{display:flex;flex-wrap:wrap;gap:12px}
+.skills span{background:var(--card);border:1px solid var(--line);padding:10px 20px;border-radius:999px;font-weight:600;box-shadow:0 3px 10px rgba(22,35,58,.05)}
+footer{background:#101c33;color:#c6d2e4;text-align:center;padding:48px 24px;margin-top:40px}
+footer img{width:72px;height:72px;border-radius:50%;border:3px solid rgba(255,255,255,.4);margin-bottom:12px;object-fit:cover}
+footer a{color:#7ea6ff;text-decoration:none;font-weight:700}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:640px){.hero h1{font-size:2rem}nav .links a{margin-left:12px;font-size:.85rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Fahad<span>.</span>sec</a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <img class="photo" src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/fahad.jpg" alt="Fahad">
+  <h1>Hi, I'm Fahad</h1>
+  <p class="tag">Cybersecurity student building <b>defensive</b> security tools — detectors, tripwires, and forensics utilities with dashboards people actually enjoy looking at.</p>
+  <a class="btn btn-light" href="#projects">View my projects</a>
+  <a class="btn btn-ghost" href="https://github.com/fmohammed1-matc" target="_blank">GitHub profile</a>
+</header>
+
+<section id="about" class="reveal">
+  <h2>About me</h2>
+  <p class="sub">A quick intro.</p>
+  <div class="about-card">
+    <p>I'm a cybersecurity student at the <b>University of Wisconsin–Whitewater</b>. I focus on the defensive side: finding intrusions, catching ransomware, exposing phishing, spotting rogue hardware, and correlating threat intel — then wrapping it all in 3D dashboards that make the invisible visible.</p>
+    <p style="margin-top:12px">Every project below is original work: working code, automated tests, and a live demo dashboard.</p>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <h2>Projects</h2>
+  <p class="sub">Five original defensive-security builds. Press play on any of them.</p>
+  <div class="grid">
+
+    <div class="proj">
+      <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/sentinel-dns.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
+      <div class="body">
+        <h3><a href="https://github.com/fmohammed1-matc/sentinel-dns" target="_blank">sentinel-dns</a></h3>
+        <p>DNS tunneling &amp; exfiltration detector. Transparent weighted heuristics — entropy, query length, beaconing rate, NXDOMAIN ratio — every score ships with its reasons. Cinematic 3D globe dashboard.</p>
+        <div class="tags"><span>Python</span><span>DNS Analysis</span><span>3D WebGL</span></div>
+        <a class="go" href="https://github.com/fmohammed1-matc/sentinel-dns" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/canarytrip.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
+      <div class="body">
+        <h3><a href="https://github.com/fmohammed1-matc/canarytrip" target="_blank">canarytrip</a></h3>
+        <p>Ransomware canary tripwire. Plants canary files and watches for the entropy-burst + mass-rename pattern, killing the process before your real files are gone.</p>
+        <div class="tags"><span>Python</span><span>Endpoint Defense</span><span>Behavioral</span></div>
+        <a class="go" href="https://github.com/fmohammed1-matc/canarytrip" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/phishlens.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
+      <div class="body">
+        <h3><a href="https://github.com/fmohammed1-matc/phishlens" target="_blank">phishlens</a></h3>
+        <p>Phishing email forensics. Upload a <code>.eml</code> and get Received-chain analysis, SPF/DKIM/DMARC authentication, homoglyph &amp; typosquat detection.</p>
+        <div class="tags"><span>Python</span><span>Email Security</span><span>Forensics</span></div>
+        <a class="go" href="https://github.com/fmohammed1-matc/phishlens" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/airguard.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
+      <div class="body">
+        <h3><a href="https://github.com/fmohammed1-matc/airguard" target="_blank">airguard</a></h3>
+        <p>Rogue access point detector. Catches evil-twin attacks with 802.11 beacon analysis — spoofed BSSIDs, signal anomalies, impersonated SSIDs. 3D radar dashboard.</p>
+        <div class="tags"><span>Python</span><span>Wireless</span><span>3D Radar</span></div>
+        <a class="go" href="https://github.com/fmohammed1-matc/airguard" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/intelfusion.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
+      <div class="body">
+        <h3><a href="https://github.com/fmohammed1-matc/intelfusion" target="_blank">intelfusion</a></h3>
+        <p>Threat-intel correlation engine — a mini-SIEM. Correlates OSINT feeds against local logs, scores IOCs, maps everything geographically. Fully offline demo mode.</p>
+        <div class="tags"><span>Python</span><span>Threat Intel</span><span>SIEM</span></div>
+        <a class="go" href="https://github.com/fmohammed1-matc/intelfusion" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <h2>Skills</h2>
+  <p class="sub">What I work with.</p>
+  <div class="skills">
+    <span>Python</span><span>Network Security</span><span>DNS Analysis</span><span>Threat Intelligence</span><span>Malware Behavior Detection</span><span>SPF / DKIM / DMARC</span><span>802.11 Wireless Security</span><span>3D Data Visualization</span><span>FastAPI</span>
+  </div>
+</section>
+
+<footer id="contact">
+  <img src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/fahad.jpg" alt="Fahad">
+  <p style="font-size:1.1rem;font-weight:700;color:#fff">Fahad</p>
+  <p>Everything here is designed, built, and maintained by me.</p>
+  <p style="margin-top:10px"><a href="https://github.com/fmohammed1-matc" target="_blank">github.com/fmohammed1-matc</a></p>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
