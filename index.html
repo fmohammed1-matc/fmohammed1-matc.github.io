@@ -132,8 +132,8 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
 <section id="about" class="reveal">
   <h2>About <span class="grad">me</span></h2>
   <div class="about-card">
-    <p>I'm Fahad — an aspiring security engineer. I got into cybersecurity because I wanted to understand how attacks actually work, not just read about them. So I started building: honeypots, tripwires, scanners, detectors.</p>
-    <p style="margin-top:12px">Everything here is defensive — tools that catch intruders, kill ransomware mid-attack, expose phishing, and find leaked secrets before the bad guys do. Each project is original work: real code, automated tests, and a demo you can run yourself.</p>
+    <p>I'm Fahad — an aspiring security engineer. I got into cybersecurity because I wanted to understand how attacks actually work, not just read about them. So I started building my own tools: honeypots that trap hackers, tripwires that catch ransomware, scanners that find leaked secrets.</p>
+    <p style="margin-top:12px">Everything here is defensive. The idea is simple: if I can build the thing that catches the attack, then I truly understand the attack. Each project is original work — real code, automated tests, and a demo you can run yourself. Scroll down and you'll see what each one does, explained in plain words.</p>
   </div>
 </section>
 
@@ -148,7 +148,7 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
       </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/sentinel-dns" target="_blank">sentinel-dns</a></h3>
-        <p>Catches DNS tunneling and data theft hiding in DNS traffic.</p>
+        <p>Hackers sometimes hide stolen data inside ordinary internet address requests. This watches those requests and spots the hidden patterns — messages sent too regularly, addresses that look randomly generated — and explains exactly why each one looks suspicious.</p>
         <div class="tags"><span>Python</span><span>DNS Analysis</span><span>3D WebGL</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/sentinel-dns" target="_blank">View on GitHub →</a>
       </div>
@@ -160,7 +160,7 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
       </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/canarytrip" target="_blank">canarytrip</a></h3>
-        <p>Tripwire that kills ransomware before it reaches your files.</p>
+        <p>Ransomware locks your files and demands money. This plants invisible bait files on your computer and watches them — the moment something starts scrambling them, it kills the attacker before your real files are touched.</p>
         <div class="tags"><span>Python</span><span>Endpoint Defense</span><span>Behavioral</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/canarytrip" target="_blank">View on GitHub →</a>
       </div>
@@ -172,7 +172,7 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
       </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/phishlens" target="_blank">phishlens</a></h3>
-        <p>Reads phishing emails like a forensic investigator.</p>
+        <p>Fake emails are how most hacks start. Upload a suspicious email and this breaks it down like a detective: where it really came from, whether its security stamps check out, and which links are traps.</p>
         <div class="tags"><span>Python</span><span>Email Security</span><span>Forensics</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/phishlens" target="_blank">View on GitHub →</a>
       </div>
@@ -184,7 +184,7 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
       </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/airguard" target="_blank">airguard</a></h3>
-        <p>Spots fake Wi-Fi hotspots trying to steal your data.</p>
+        <p>Hackers set up fake Wi-Fi hotspots with familiar names to steal your passwords. This listens to the wireless signals around you and flags the fakes — wrong hardware IDs, strange signal behavior, copycat network names.</p>
         <div class="tags"><span>Python</span><span>Wireless</span><span>3D Radar</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/airguard" target="_blank">View on GitHub →</a>
       </div>
@@ -196,7 +196,7 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
       </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/intelfusion" target="_blank">intelfusion</a></h3>
-        <p>Correlates threat intel into one clear picture.</p>
+        <p>Security teams drown in threat reports. This pulls in public threat intelligence and matches it against your own logs, so you can see which known-bad addresses and files have actually touched your network — on a 3D map.</p>
         <div class="tags"><span>Python</span><span>Threat Intel</span><span>SIEM</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/intelfusion" target="_blank">View on GitHub →</a>
       </div>
@@ -208,7 +208,7 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
       </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/honeymesh" target="_blank">honeymesh</a></h3>
-        <p>Fake servers that trap and fingerprint hackers.</p>
+        <p>A honeypot is a trap — a fake server that looks easy to hack. This runs a network of them, studies how attackers try to break in (what usernames they guess, what tools they use), and scores how dangerous each attacker looks.</p>
         <div class="tags"><span>Python</span><span>Honeypots</span><span>3D Globe</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/honeymesh" target="_blank">View on GitHub →</a>
       </div>
@@ -220,7 +220,7 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
       </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/usbsentinel" target="_blank">usbsentinel</a></h3>
-        <p>Stops malicious USB attacks cold.</p>
+        <p>A USB stick can be a weapon — some pretend to be keyboards and start typing malicious commands the second they're plugged in. This watches every USB device, flags the fakes, and spots rapid file copying that looks like data theft.</p>
         <div class="tags"><span>Python</span><span>USB Security</span><span>Endpoint</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/usbsentinel" target="_blank">View on GitHub →</a>
       </div>
@@ -232,7 +232,7 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
       </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/lateralens" target="_blank">lateralens</a></h3>
-        <p>Catches intruders moving between computers.</p>
+        <p>Once hackers get into one computer, they quietly hop to others. This maps how logins move between machines on a network and flags the suspicious hops — chained remote sessions, logins in two places at once, movement at 3am.</p>
         <div class="tags"><span>Python</span><span>Network</span><span>3D Graph</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/lateralens" target="_blank">View on GitHub →</a>
       </div>
@@ -244,7 +244,7 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
       </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/leakguard" target="_blank">leakguard</a></h3>
-        <p>Finds leaked passwords and keys in your code.</p>
+        <p>Developers accidentally publish passwords and API keys in their code — even "deleted" ones stay in the file history. This scans files and past versions, finds the leaked secrets, and can automatically black them out.</p>
         <div class="tags"><span>Python</span><span>AppSec</span><span>Forensics</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/leakguard" target="_blank">View on GitHub →</a>
       </div>
@@ -256,7 +256,7 @@ footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;po
       </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/bgpwatch" target="_blank">bgpwatch</a></h3>
-        <p>Watches the internet's routing for hijacks.</p>
+        <p>The internet runs on trust between networks about who owns which addresses — and attackers sometimes lie to reroute traffic through themselves. This watches those routing announcements and flags the lies.</p>
         <div class="tags"><span>Python</span><span>BGP</span><span>Internet-Scale</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/bgpwatch" target="_blank">View on GitHub →</a>
       </div>
