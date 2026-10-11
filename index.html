@@ -4,57 +4,89 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fahad — Defensive Cybersecurity Portfolio</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 :root{
   --bg:#f4f7fb; --card:#ffffff; --ink:#16233a; --muted:#5b6b82;
   --blue:#2563eb; --blue-deep:#1e40af; --line:#e3e9f2;
+  --dark:#0a1430;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
-nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .wrap{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
-nav .logo{font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none}
-nav .logo span{color:var(--blue)}
-nav .links a{margin-left:22px;color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#2563eb,#7ea6ff);width:0;z-index:100}
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,box-shadow .3s}
+nav .wrap{max-width:1120px;margin:0 auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+nav .logo{font-weight:800;font-size:1.2rem;color:#fff;text-decoration:none;transition:color .3s}
+nav .logo span{color:#7ea6ff}
+nav .links a{margin-left:22px;color:rgba(255,255,255,.85);text-decoration:none;font-weight:600;font-size:.95rem;transition:color .3s}
+nav.solid{background:rgba(255,255,255,.92);backdrop-filter:blur(10px);box-shadow:0 2px 16px rgba(10,20,48,.08)}
+nav.solid .logo{color:var(--ink)}
+nav.solid .links a{color:var(--muted)}
 nav .links a:hover{color:var(--blue)}
-.hero{background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 55%,#3b82f6 100%);color:#fff;padding:84px 24px 72px;text-align:center;position:relative;overflow:hidden}
-.hero img.photo{width:150px;height:150px;border-radius:50%;border:5px solid rgba(255,255,255,.85);box-shadow:0 12px 40px rgba(0,0,0,.25);object-fit:cover}
-.hero h1{font-size:2.6rem;margin:20px 0 6px;letter-spacing:-.5px}
-.hero p.tag{font-size:1.15rem;opacity:.92;max-width:620px;margin:0 auto 28px}
-.btn{display:inline-block;padding:12px 28px;border-radius:999px;font-weight:700;text-decoration:none;margin:6px;transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}
-.btn-light{background:#fff;color:var(--blue-deep)}
-.btn-ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
-section{max-width:1080px;margin:0 auto;padding:72px 24px}
-section h2{font-size:1.9rem;margin-bottom:8px;letter-spacing:-.3px}
-section .sub{color:var(--muted);margin-bottom:36px;max-width:640px}
-.about-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px;box-shadow:0 6px 24px rgba(22,35,58,.06)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
-.proj{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(22,35,58,.06);transition:transform .2s,box-shadow .2s}
-.proj:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(37,99,235,.14)}
-.proj video{width:100%;display:block;background:#0f1c33;aspect-ratio:16/9;object-fit:cover}
-.proj .body{padding:24px}
-.proj h3{font-size:1.25rem;margin-bottom:6px}
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;background:radial-gradient(1200px 800px at 50% 20%,#16306e 0%,#0a1430 60%,#060b1d 100%)}
+#bg3d{position:absolute;inset:0;width:100%;height:100%}
+.hero-inner{position:relative;z-index:2;padding:120px 24px 80px;max-width:820px}
+.hero img.photo{width:160px;height:160px;border-radius:50%;border:5px solid rgba(126,166,255,.6);box-shadow:0 0 60px rgba(80,140,255,.45);object-fit:cover;animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero h1{font-size:3.2rem;margin:24px 0 4px;letter-spacing:-1px;background:linear-gradient(90deg,#fff,#9ec1ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .role{font-size:1.05rem;letter-spacing:4px;text-transform:uppercase;color:#7ea6ff;font-weight:700;margin-bottom:14px}
+.hero p.tag{font-size:1.18rem;opacity:.9;max-width:640px;margin:0 auto 32px}
+.btn{display:inline-block;padding:13px 32px;border-radius:999px;font-weight:700;text-decoration:none;margin:6px;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn-light{background:linear-gradient(90deg,#3b82f6,#2563eb);color:#fff;box-shadow:0 10px 30px rgba(59,130,246,.45)}
+.btn-ghost{border:2px solid rgba(255,255,255,.5);color:#fff}
+.stats{display:flex;justify-content:center;gap:48px;margin-top:56px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat b{font-size:2rem;display:block;background:linear-gradient(90deg,#fff,#9ec1ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat small{color:rgba(255,255,255,.65);letter-spacing:1px;text-transform:uppercase;font-size:.75rem}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.55);font-size:.8rem;letter-spacing:2px;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+/* ---------- SECTIONS ---------- */
+section{max-width:1120px;margin:0 auto;padding:88px 24px}
+section h2{font-size:2rem;margin-bottom:6px;letter-spacing:-.5px}
+section h2 .grad{background:linear-gradient(90deg,#2563eb,#7ea6ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+section .sub{color:var(--muted);margin-bottom:40px;max-width:640px;font-size:1.05rem}
+.about-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:40px;box-shadow:0 10px 34px rgba(22,35,58,.07);position:relative;overflow:hidden}
+.about-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#2563eb,#7ea6ff)}
+/* ---------- PROJECTS ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;perspective:1200px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(22,35,58,.07);transition:transform .18s ease-out,box-shadow .25s;transform-style:preserve-3d;will-change:transform}
+.proj:hover{box-shadow:0 24px 60px rgba(37,99,235,.18)}
+.proj .vwrap{position:relative;overflow:hidden}
+.proj video{width:100%;display:block;background:#0f1c33;aspect-ratio:16/9;object-fit:cover;transform:translateZ(30px)}
+.proj .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.proj .play i{width:64px;height:64px;border-radius:50%;background:rgba(37,99,235,.9);color:#fff;font-style:normal;font-size:1.4rem;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,99,235,.5);transition:opacity .2s}
+.proj:hover .play i{opacity:0}
+.proj .body{padding:26px;transform:translateZ(20px)}
+.proj h3{font-size:1.3rem;margin-bottom:6px}
 .proj h3 a{color:var(--ink);text-decoration:none}
 .proj h3 a:hover{color:var(--blue)}
 .proj p{color:var(--muted);font-size:.96rem;margin-bottom:14px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .tags span{background:#e8effc;color:var(--blue-deep);font-size:.78rem;font-weight:700;padding:4px 12px;border-radius:999px}
 .proj .go{color:var(--blue);font-weight:700;text-decoration:none}
-.skills{display:flex;flex-wrap:wrap;gap:12px}
-.skills span{background:var(--card);border:1px solid var(--line);padding:10px 20px;border-radius:999px;font-weight:600;box-shadow:0 3px 10px rgba(22,35,58,.05)}
-footer{background:#101c33;color:#c6d2e4;text-align:center;padding:48px 24px;margin-top:40px}
-footer img{width:72px;height:72px;border-radius:50%;border:3px solid rgba(255,255,255,.4);margin-bottom:12px;object-fit:cover}
+/* ---------- SKILLS MARQUEE ---------- */
+.marquee{overflow:hidden;white-space:nowrap;padding:10px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee .track{display:inline-block;animation:slide 26s linear infinite}
+.marquee span{display:inline-block;background:var(--card);border:1px solid var(--line);padding:12px 26px;border-radius:999px;font-weight:700;margin:0 8px;box-shadow:0 4px 14px rgba(22,35,58,.06)}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* ---------- FOOTER ---------- */
+footer{background:linear-gradient(135deg,#0a1430,#14306e);color:#c6d2e4;text-align:center;padding:64px 24px;position:relative;overflow:hidden}
+footer img{width:84px;height:84px;border-radius:50%;border:3px solid rgba(126,166,255,.5);margin-bottom:14px;object-fit:cover}
 footer a{color:#7ea6ff;text-decoration:none;font-weight:700}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+footer .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;pointer-events:none}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
-@media(max-width:640px){.hero h1{font-size:2rem}nav .links a{margin-left:12px;font-size:.85rem}}
+@media(max-width:640px){.hero h1{font-size:2.2rem}nav .links a{margin-left:12px;font-size:.85rem}.stats{gap:28px}}
 </style>
 </head>
 <body>
+<div id="progress"></div>
 
-<nav>
+<nav id="nav">
   <div class="wrap">
     <a class="logo" href="#top">Fahad<span>.</span>sec</a>
     <div class="links">
@@ -67,39 +99,55 @@ footer a{color:#7ea6ff;text-decoration:none;font-weight:700}
 </nav>
 
 <header class="hero" id="top">
-  <img class="photo" src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/fahad.jpg" alt="Fahad">
-  <h1>Hi, I'm Fahad</h1>
-  <p class="tag">Cybersecurity student building <b>defensive</b> security tools — detectors, tripwires, and forensics utilities with dashboards people actually enjoy looking at.</p>
-  <a class="btn btn-light" href="#projects">View my projects</a>
-  <a class="btn btn-ghost" href="https://github.com/fmohammed1-matc" target="_blank">GitHub profile</a>
+  <canvas id="bg3d"></canvas>
+  <div class="hero-inner">
+    <img class="photo" src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/fahad.jpg" alt="Fahad">
+    <div class="role">Defensive Cybersecurity</div>
+    <h1>Hi, I'm Fahad</h1>
+    <p class="tag">I build security tools that fight back — detectors, tripwires, and forensics utilities with cinematic 3D dashboards.</p>
+    <a class="btn btn-light" href="#projects">Explore my work</a>
+    <a class="btn btn-ghost" href="https://github.com/fmohammed1-matc" target="_blank">GitHub profile</a>
+    <div class="stats">
+      <div class="stat"><b data-count="5">0</b><small>Projects</small></div>
+      <div class="stat"><b data-count="5">0</b><small>3D Dashboards</small></div>
+      <div class="stat"><b data-count="100">0</b><small>% Defensive</small></div>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL ↓</div>
 </header>
 
 <section id="about" class="reveal">
-  <h2>About me</h2>
-  <p class="sub">A quick intro.</p>
+  <h2>About <span class="grad">me</span></h2>
+  <p class="sub">The human behind the code.</p>
   <div class="about-card">
-    <p>I'm a cybersecurity student at the <b>University of Wisconsin–Whitewater</b>. I focus on the defensive side: finding intrusions, catching ransomware, exposing phishing, spotting rogue hardware, and correlating threat intel — then wrapping it all in 3D dashboards that make the invisible visible.</p>
+    <p>I'm a cybersecurity student at the <b>University of Wisconsin–Whitewater</b>. I work the defensive side: finding intrusions, catching ransomware mid-attack, exposing phishing, spotting rogue hardware, and correlating threat intel — then wrapping it all in 3D dashboards that make the invisible visible.</p>
     <p style="margin-top:12px">Every project below is original work: working code, automated tests, and a live demo dashboard.</p>
   </div>
 </section>
 
 <section id="projects" class="reveal">
-  <h2>Projects</h2>
-  <p class="sub">Five original defensive-security builds. Press play on any of them.</p>
+  <h2>Project <span class="grad">showcase</span></h2>
+  <p class="sub">Hover a card — it moves in 3D. Hover a video — it plays.</p>
   <div class="grid">
 
     <div class="proj">
-      <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/sentinel-dns.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
+      <div class="vwrap">
+        <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/sentinel-dns.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0"></video>
+        <div class="play"><i>▶</i></div>
+      </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/sentinel-dns" target="_blank">sentinel-dns</a></h3>
-        <p>DNS tunneling &amp; exfiltration detector. Transparent weighted heuristics — entropy, query length, beaconing rate, NXDOMAIN ratio — every score ships with its reasons. Cinematic 3D globe dashboard.</p>
+        <p>DNS tunneling &amp; exfiltration detector. Transparent weighted heuristics — entropy, query length, beaconing rate, NXDOMAIN ratio — every score ships with its reasons.</p>
         <div class="tags"><span>Python</span><span>DNS Analysis</span><span>3D WebGL</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/sentinel-dns" target="_blank">View on GitHub →</a>
       </div>
     </div>
 
     <div class="proj">
-      <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/canarytrip.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
+      <div class="vwrap">
+        <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/canarytrip.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0"></video>
+        <div class="play"><i>▶</i></div>
+      </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/canarytrip" target="_blank">canarytrip</a></h3>
         <p>Ransomware canary tripwire. Plants canary files and watches for the entropy-burst + mass-rename pattern, killing the process before your real files are gone.</p>
@@ -109,7 +157,10 @@ footer a{color:#7ea6ff;text-decoration:none;font-weight:700}
     </div>
 
     <div class="proj">
-      <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/phishlens.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
+      <div class="vwrap">
+        <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/phishlens.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0"></video>
+        <div class="play"><i>▶</i></div>
+      </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/phishlens" target="_blank">phishlens</a></h3>
         <p>Phishing email forensics. Upload a <code>.eml</code> and get Received-chain analysis, SPF/DKIM/DMARC authentication, homoglyph &amp; typosquat detection.</p>
@@ -119,20 +170,26 @@ footer a{color:#7ea6ff;text-decoration:none;font-weight:700}
     </div>
 
     <div class="proj">
-      <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/airguard.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
+      <div class="vwrap">
+        <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/airguard.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0"></video>
+        <div class="play"><i>▶</i></div>
+      </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/airguard" target="_blank">airguard</a></h3>
-        <p>Rogue access point detector. Catches evil-twin attacks with 802.11 beacon analysis — spoofed BSSIDs, signal anomalies, impersonated SSIDs. 3D radar dashboard.</p>
+        <p>Rogue access point detector. Catches evil-twin attacks with 802.11 beacon analysis — spoofed BSSIDs, signal anomalies, impersonated SSIDs.</p>
         <div class="tags"><span>Python</span><span>Wireless</span><span>3D Radar</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/airguard" target="_blank">View on GitHub →</a>
       </div>
     </div>
 
     <div class="proj">
-      <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/intelfusion.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause()"></video>
+      <div class="vwrap">
+        <video src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/intelfusion.mp4" muted loop playsinline preload="metadata" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0"></video>
+        <div class="play"><i>▶</i></div>
+      </div>
       <div class="body">
         <h3><a href="https://github.com/fmohammed1-matc/intelfusion" target="_blank">intelfusion</a></h3>
-        <p>Threat-intel correlation engine — a mini-SIEM. Correlates OSINT feeds against local logs, scores IOCs, maps everything geographically. Fully offline demo mode.</p>
+        <p>Threat-intel correlation engine — a mini-SIEM. Correlates OSINT feeds against local logs, scores IOCs, maps everything geographically.</p>
         <div class="tags"><span>Python</span><span>Threat Intel</span><span>SIEM</span></div>
         <a class="go" href="https://github.com/fmohammed1-matc/intelfusion" target="_blank">View on GitHub →</a>
       </div>
@@ -142,23 +199,93 @@ footer a{color:#7ea6ff;text-decoration:none;font-weight:700}
 </section>
 
 <section id="skills" class="reveal">
-  <h2>Skills</h2>
+  <h2>Skills <span class="grad">arsenal</span></h2>
   <p class="sub">What I work with.</p>
-  <div class="skills">
+  <div class="marquee"><div class="track" id="mtrack">
     <span>Python</span><span>Network Security</span><span>DNS Analysis</span><span>Threat Intelligence</span><span>Malware Behavior Detection</span><span>SPF / DKIM / DMARC</span><span>802.11 Wireless Security</span><span>3D Data Visualization</span><span>FastAPI</span>
-  </div>
+  </div></div>
 </section>
 
 <footer id="contact">
+  <div class="orb" style="width:340px;height:340px;background:#2563eb;top:-120px;left:-100px"></div>
+  <div class="orb" style="width:280px;height:280px;background:#7ea6ff;bottom:-100px;right:-80px"></div>
   <img src="https://raw.githubusercontent.com/fmohammed1-matc/fmohammed1-matc/main/assets/fahad.jpg" alt="Fahad">
-  <p style="font-size:1.1rem;font-weight:700;color:#fff">Fahad</p>
+  <p style="font-size:1.2rem;font-weight:800;color:#fff">Fahad</p>
   <p>Everything here is designed, built, and maintained by me.</p>
   <p style="margin-top:10px"><a href="https://github.com/fmohammed1-matc" target="_blank">github.com/fmohammed1-matc</a></p>
 </footer>
 
 <script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+/* ---------- 3D HERO (three.js) ---------- */
+(function(){
+  if(!window.THREE) return;
+  const canvas=document.getElementById('bg3d');
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(60,1,0.1,100);
+  camera.position.z=9;
+  function size(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+  size(); window.addEventListener('resize',size);
+  // wireframe icosahedron core
+  const core=new THREE.Mesh(new THREE.IcosahedronGeometry(2.1,1),new THREE.MeshBasicMaterial({color:0x5ea0ff,wireframe:true,transparent:true,opacity:.55}));
+  scene.add(core);
+  const inner=new THREE.Mesh(new THREE.IcosahedronGeometry(1.2,0),new THREE.MeshBasicMaterial({color:0x9ec1ff,wireframe:true,transparent:true,opacity:.8}));
+  scene.add(inner);
+  // orbit rings
+  const rings=[];
+  [[3.4,0.5,0.2],[4.1,-0.4,1.1]].forEach(([r,tx,tz])=>{
+    const ring=new THREE.Mesh(new THREE.TorusGeometry(r,.015,8,90),new THREE.MeshBasicMaterial({color:0x3b82f6,transparent:true,opacity:.5}));
+    ring.rotation.x=tx; ring.rotation.z=tz; scene.add(ring); rings.push(ring);
+  });
+  // particle field
+  const N=450, pos=new Float32Array(N*3);
+  for(let i=0;i<N;i++){const R=5+Math.random()*7,th=Math.random()*Math.PI*2,ph=Math.acos(2*Math.random()-1);
+    pos[i*3]=R*Math.sin(ph)*Math.cos(th);pos[i*3+1]=R*Math.sin(ph)*Math.sin(th)*.6;pos[i*3+2]=R*Math.cos(ph);}
+  const pts=new THREE.Points(new THREE.BufferGeometry().setAttribute('position',new THREE.BufferAttribute(pos,3)),
+    new THREE.PointsMaterial({color:0x7ea6ff,size:.06,transparent:true,opacity:.85}));
+  scene.add(pts);
+  let mx=0,my=0;
+  window.addEventListener('mousemove',e=>{mx=(e.clientX/window.innerWidth-.5)*2;my=(e.clientY/window.innerHeight-.5)*2;});
+  (function tick(){
+    requestAnimationFrame(tick);
+    core.rotation.y+=.0018; core.rotation.x+=.0009;
+    inner.rotation.y-=.003; inner.rotation.z+=.0012;
+    rings.forEach((r,i)=>{r.rotation.z+=(i?-.0016:.0012);});
+    pts.rotation.y+=.0004;
+    camera.position.x+=(mx*1.4-camera.position.x)*.04;
+    camera.position.y+=(-my*.9-camera.position.y)*.04;
+    camera.lookAt(0,0,0);
+    renderer.render(scene,camera);
+  })();
+})();
+/* ---------- NAV + PROGRESS ---------- */
+const nav=document.getElementById('nav'), prog=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('solid',window.scrollY>40);
+  const h=document.documentElement;
+  prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+/* ---------- 3D TILT CARDS ---------- */
+document.querySelectorAll('.proj').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(1000px) rotateY(${x*12}deg) rotateX(${-y*12}deg) translateY(-6px)`;
+  });
+  card.addEventListener('mouseleave',()=>{card.style.transform='';});
+});
+/* ---------- REVEAL ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* ---------- COUNTERS ---------- */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  const el=e.target,end=+el.dataset.count,t0=performance.now();
+  (function step(t){const p=Math.min(1,(t-t0)/1200);el.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);})(t0);
+}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+/* ---------- MARQUEE DUP ---------- */
+const mt=document.getElementById('mtrack'); mt.innerHTML+=mt.innerHTML;
 </script>
 </body>
 </html>
